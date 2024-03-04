@@ -1,7 +1,9 @@
 import axios from "axios";
+import { getCookie } from "cookies-next";
 
 import { ILoginProps, IRegisterProps } from "@/types/auth.type";
 import { UNKNOWN_ERROR } from "./constants";
+import { IUserCreate } from "@/types/user.type";
 
 const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -33,6 +35,19 @@ export const verifyEmail = async (otp: string) => {
     };
 
     const response = await client.post("auth/otp-verification", postData);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.response.data.message || UNKNOWN_ERROR);
+  }
+};
+
+export const createUser = async (data: IUserCreate) => {
+  try {
+    const response = await client.post("add-user", data, {
+      headers: {
+        Authorization: "Bearer " + getCookie("token"),
+      },
+    });
     return response.data;
   } catch (error: any) {
     throw new Error(error.response.data.message || UNKNOWN_ERROR);

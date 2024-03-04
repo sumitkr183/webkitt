@@ -2,6 +2,8 @@ export const UNKNOWN_ERROR = "Something went wrong, Please try agin.";
 export const LOGIN_SUCCESS = "Login Successfully!";
 export const REGISTER_SUCCESS = "User Registered Successfully!";
 export const VERIFY_SUCCESS = "Email Verified Successfully!";
+export const USER_SUCCESS = "User Created Successfully!";
+
 
 export const ERROR_OBJECT = { status: false };
 
@@ -60,28 +62,28 @@ export const MENU_ITEMS = [
   },
   {
     _uid: "3",
-    name: "Campaign",
-    link: "/campaign",
+    name: "Campaigns",
+    link: "/campaigns",
     icon: "GoProjectRoadmap",
-    targetSegment: "campaign",
+    targetSegment: "campaigns",
     hasChild: true,
     accessRole: [ADMIN_ROLE, USER_ROLE],
     child: [
       {
         _uid: "3-1",
         name: "Create",
-        link: "/campaign/create",
+        link: "/campaigns/create",
         icon: "MdCreate",
-        targetSegment: "campaign",
+        targetSegment: "campaigns",
         hasChild: false,
         accessRole: [USER_ROLE],
       },
       {
         _uid: "3-2",
         name: "View",
-        link: "/campaign",
+        link: "/campaigns",
         icon: "GrView",
-        targetSegment: "campaign",
+        targetSegment: "campaigns",
         hasChild: false,
         accessRole: [ADMIN_ROLE, USER_ROLE],
       },

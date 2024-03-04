@@ -1,9 +1,4 @@
-import { Metadata } from "next";
 import CreateCampaign from "@/components/campaign/create";
-
-export const metadata: Metadata = {
-  title: "Create Campaign | Webkitt",
-};
 
 const CampaignCreatePage = () => {
   return (

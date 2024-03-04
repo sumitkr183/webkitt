@@ -4,8 +4,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Form, { FormArea, FormGroup, FormRadio } from "@/components/ui/form";
 import Button from "@/components/ui/button";
 import { ICampaignProps } from "@/types/campaign.type";
-import { FileUploader } from "react-drag-drop-files";
-import { useRef } from "react";
 
 const CreateCampaign = () => {
   const {
@@ -42,9 +40,6 @@ const CreateCampaign = () => {
           {...register("type", { required: "Campaign type is required" })}
         />
       </div>
-      {/* <FileUploader
-        {...register("files", { required: "Please select a file" })}
-      /> */}
       {errors.type && (
         <span className="required-field">{errors.type.message}</span>
       )}
