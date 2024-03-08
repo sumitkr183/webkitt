@@ -1,7 +1,8 @@
 import Link from "next/link";
-import React from "react";
 import { FaCrown } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
+
+import UserProfile from "@/components/auth/user-profile";
 
 const Header = () => {
   return (
@@ -20,6 +21,7 @@ const Header = () => {
             <FaCrown fill="#ffc928" /> Upgrade Plan
           </Link>
         </div>
+        <UserProfile />
       </div>
     </div>
   );

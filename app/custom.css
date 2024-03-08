@@ -1,4 +1,3 @@
-
 /* scroll bar */
 /* ::-webkit-scrollbar {
   width: 6px;
@@ -17,8 +16,8 @@
   background: #555;
 } */
 
-
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -352,27 +351,28 @@ td > svg {
   background: rgba(0, 0, 0, 0.6);
 }
 
-.profile-sidebar-header:hover .profile-upload{
+.profile-sidebar-header:hover .profile-upload {
   display: flex;
 }
 
-.card-timeline-note{
-  border: 1px solid rgba(0, 0, 0, 0.2)
+.card-timeline-note {
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.timeline-height{
+.timeline-height {
   max-height: 500px;
   overflow-y: auto;
 }
 
-.css-13cymwt-control, .css-t3ipsp-control{
+.css-13cymwt-control,
+.css-t3ipsp-control {
   border-radius: 0 !important;
   min-height: 37px !important;
   border: 1px solid #d9dfe7 !important;
   box-shadow: unset !important;
 }
 
-.css-t3ipsp-control:hover{
+.css-t3ipsp-control:hover {
   border-radius: 0 !important;
   border: 1px solid #d9dfe7 !important;
 }
@@ -384,7 +384,7 @@ td > svg {
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
-  height: 2px
+  height: 2px;
 }
 
 /* Track */
@@ -414,7 +414,7 @@ td > svg {
 
 .disable-options svg {
   pointer-events: none;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .card-pricing .card-body li span {
@@ -443,10 +443,10 @@ td > svg {
   overflow: auto;
 }
 
-.social-card{
+.social-card {
   position: relative;
   padding: 15px 10px;
-  border: 1px solid rgba(0,0,0,.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .social-card:hover {
@@ -466,7 +466,7 @@ td > svg {
   left: 5px;
 }
 
-.text-capitalize{
+.text-capitalize {
   text-transform: capitalize;
 }
 
@@ -485,7 +485,7 @@ td > svg {
 }
 
 .flex-col {
-  flex-direction: column
+  flex-direction: column;
 }
 
 .flex-content {
@@ -526,4 +526,19 @@ td > svg {
 
 .hide-arrow::after {
   border-color: transparent !important;
+}
+
+.loader-icon {
+  margin-right: 7px;
+  top: 2px;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
 }

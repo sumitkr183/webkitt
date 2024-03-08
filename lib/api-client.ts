@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 
 import { ILoginProps, IRegisterProps } from "@/types/auth.type";
 import { UNKNOWN_ERROR } from "./constants";
@@ -36,6 +36,22 @@ export const verifyEmail = async (otp: string) => {
 
     const response = await client.post("auth/otp-verification", postData);
     return response.data;
+  } catch (error: any) {
+    throw new Error(error.response.data.message || UNKNOWN_ERROR);
+  }
+};
+
+export const logoutUser = async () => {
+  try {
+    const response = await client.post("auth/logout", "", {
+      headers: {
+        Authorization: "Bearer " + getCookie("token"),
+      },
+    });
+
+    if (response.status === 200) {
+      deleteCookie("token");
+    }
   } catch (error: any) {
     throw new Error(error.response.data.message || UNKNOWN_ERROR);
   }
