@@ -15,7 +15,6 @@ const CreateCampaign = () => {
   const onSubmit: SubmitHandler<ICampaignProps> = async (data) =>
     console.log(data);
 
-  console.log(errors);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="form-settings">

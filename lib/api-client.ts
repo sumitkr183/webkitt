@@ -1,9 +1,10 @@
 import axios from "axios";
-import { deleteCookie, getCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 
 import { ILoginProps, IRegisterProps } from "@/types/auth.type";
 import { UNKNOWN_ERROR } from "./constants";
 import { IUserCreate } from "@/types/user.type";
+import { removeAllCookies } from "./utility";
 
 const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -13,7 +14,7 @@ export const loginUser = async (data: ILoginProps) => {
   try {
     const response = await client.post("auth/login", data);
     return response.data;
-  } catch (error: any) {
+  } catch (error: any) {    
     throw new Error(error.response.data.message || UNKNOWN_ERROR);
   }
 };
@@ -49,9 +50,7 @@ export const logoutUser = async () => {
       },
     });
 
-    if (response.status === 200) {
-      deleteCookie("token");
-    }
+    removeAllCookies();
   } catch (error: any) {
     throw new Error(error.response.data.message || UNKNOWN_ERROR);
   }

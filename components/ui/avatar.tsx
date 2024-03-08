@@ -1,24 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { useAuthUser } from "@/store/user";
+import clsx from "clsx";
 
-const Avatar = () => {
-  const { image } = useAuthUser();
+interface IAvatar {
+  size?: "sm" | "xl";
+  rounded?: boolean;
+  fallbackUrl?: string;
+}
+
+const Avatar = ({
+  size = "sm",
+  rounded,
+  fallbackUrl = "/images/profile-user.png",
+}: IAvatar) => {
   const [profile, setProfile] = useState("");
 
-  useEffect(() => setProfile(image), [image]);
-
   return (
-    <div className={`avatar avatar-sm`}>
+    <div
+      className={clsx("avatar", {
+        "avatar-sm": size === "sm",
+        "avatar-xxl": size === "xl",
+      })}
+    >
       <Image
-        src={profile || "/images/profile-user.png"}
+        src={profile || fallbackUrl}
         width={50}
         height={50}
-        className="rounded-circle"
-        onError={() => setProfile("/images/profile-user.png")}
-        alt="user profile"
+        className={clsx(rounded && "rounded-circle")}
+        onError={() => setProfile(fallbackUrl)}
+        alt="avatar"
       />
     </div>
   );

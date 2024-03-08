@@ -22,8 +22,10 @@ const DropDownMenu = () => {
 
     await logoutUser();
     setLoader(false);
-    router.refresh();
     toast.success("Logout Successfully!");
+    
+    router.push("/");
+    router.refresh();
   };
 
   return (

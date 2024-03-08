@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+import { decryptData } from "./lib/encrypt";
 
 const publicPaths = [
   "/",
@@ -17,6 +18,7 @@ const _getPath = (path: string) => {
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const userToken = request.cookies.get('token')?.value || ""
+  const role = request.cookies.get('role')?.value || ""
 
   if (!userToken && !publicPaths.includes(_getPath(path) as string)) {
     return NextResponse.redirect(new URL("/", request.url));
