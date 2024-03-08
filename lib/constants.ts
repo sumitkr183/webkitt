@@ -311,3 +311,29 @@ export const MENU_ITEMS = [
     child: [],
   },
 ];
+
+export const AUTHORIZE_PATHS: Record<string, number[]> = {
+  "/dashboard": [ADMIN_ROLE, USER_ROLE, EMPLOYEE_ROLE],
+  "/users": [ADMIN_ROLE],
+  "/users/create": [ADMIN_ROLE],
+  "/users/restore": [ADMIN_ROLE],
+  "/campaigns": [ADMIN_ROLE, USER_ROLE],
+  "/campaigns/create": [USER_ROLE],
+  "/social-accounts": [ADMIN_ROLE, USER_ROLE],
+  "/social-accounts/connect": [USER_ROLE],
+  "/lead-source": [USER_ROLE, EMPLOYEE_ROLE],
+  "/lead-source/create": [USER_ROLE, EMPLOYEE_ROLE],
+  "/lead-segment": [USER_ROLE, EMPLOYEE_ROLE],
+  "/lead-segment/create": [USER_ROLE, EMPLOYEE_ROLE],
+  "/lead-manager": [ADMIN_ROLE, USER_ROLE, EMPLOYEE_ROLE],
+  "/lead-manager/create": [USER_ROLE, EMPLOYEE_ROLE],
+  "/lead-manager/restore": [USER_ROLE],
+  "/employees": [USER_ROLE],
+  "/employees/create": [USER_ROLE],
+  "/employees/restore": [USER_ROLE],
+  "/marketplace": [USER_ROLE],
+  "/marketplace/accounts": [USER_ROLE],
+  "/marketplace/integrate": [USER_ROLE],
+  "/analytics": [USER_ROLE],
+  "/tutorials": [ADMIN_ROLE, USER_ROLE, EMPLOYEE_ROLE]
+}

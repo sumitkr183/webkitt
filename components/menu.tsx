@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import Link from "next/link";
 import clsx from "clsx";
 
 import ExportIcon from "./ui/export-icon";
-import { decryptData } from "@/lib/encrypt";
-import { getCookie } from "cookies-next";
 import { getUserRole } from "@/lib/utility";
 
 interface IMenu {
@@ -38,8 +36,15 @@ const Menu = ({
   const router = useRouter();
   const activeSegment = useSelectedLayoutSegment();
   const ref = useDetectClickOutside({ onTriggered: () => setShowMenu(false) });
+  const role = getUserRole();
 
   const [showMenu, setShowMenu] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(()=> setIsClient(true), [])
+
+  if(!isClient) return null
+  if(!accessRole.includes(role)) return null
 
   return (
     <li
@@ -61,7 +66,7 @@ const Menu = ({
       {hasChild && (
         <nav className="nav nav-sub">
           {child.map((item, index) => (
-            <MenuItem key={index} {...item} />
+            <MenuItem key={index} {...item} role={role} />
           ))}
         </nav>
       )}
@@ -75,9 +80,11 @@ interface IMenuItemProps {
   name: string;
   link: string;
   accessRole: number[];
+  role: number;
 }
 
-const MenuItem = ({ name, link }: IMenuItemProps) => {
+const MenuItem = ({ name, link, accessRole, role }: IMenuItemProps) => {
+  if (!accessRole.includes(role)) return null;
   return (
     <>
       <Link href={link} className="nav-sub-link">
