@@ -16,15 +16,4 @@ const Table = ({ children, className }: ITable) => {
   );
 };
 
-const Head = ({ children, className }: ITable) => {
-  return <thead className={clsx(className)}>{children}</thead>;
-};
-
-const Body = ({ children, className }: ITable) => {
-  return <tbody className={clsx(className)}>{children}</tbody>;
-};
-
-Table.Head = Head;
-Table.Body = Body;
-
 export default Table;

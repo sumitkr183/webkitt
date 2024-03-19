@@ -3,6 +3,7 @@ import { useSignUp } from "./use-sign-up";
 import { useEmailVerify } from "./use-email-verify";
 import { useForgotPassword } from "./use-forgot-password";
 import { useCreateUser } from "./use-create-user";
+import { useFetchUser } from "./user-fetch-user";
 
 export {
   useSignIn,
@@ -10,4 +11,5 @@ export {
   useEmailVerify,
   useForgotPassword,
   useCreateUser,
+  useFetchUser
 };

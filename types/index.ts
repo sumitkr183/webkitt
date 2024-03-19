@@ -22,3 +22,8 @@ export interface IVariants {
     | "light"
     | "dark";
 }
+
+export interface IError {
+  error: Error;
+  reset: () => void;
+}

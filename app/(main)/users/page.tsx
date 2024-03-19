@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import Link from "next/link";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-import { Table } from "@/components/ui/skeleton";
+import { TableLoader } from "@/components/ui/skeleton";
 import ViewUsers from "@/components/user/view-users";
 
 const UsersView = () => {
@@ -21,7 +21,7 @@ const UsersView = () => {
         </div>
       </div>
       <div className="card card-body">
-        <Suspense fallback={<Table />}>
+        <Suspense fallback={<TableLoader />}>
           <ViewUsers />
         </Suspense>
       </div>

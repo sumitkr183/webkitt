@@ -6,7 +6,7 @@ import { UNKNOWN_ERROR } from "./constants";
 import { IUserCreate } from "@/types/user.type";
 import { removeAllCookies } from "./utility";
 
-const client = axios.create({
+export const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
