@@ -32,7 +32,7 @@ const DropDownMenu = () => {
     <>
       <div className="dropdown-menu-header">
         <div className="media align-items-center">
-          <Avatar />
+          <Avatar image="/images/profile-user.png" rounded />
           <div className="media-body mg-l-10">
             <h6>Jon</h6>
             <span>jon@gmail.com</span>

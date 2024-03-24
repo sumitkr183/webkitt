@@ -510,6 +510,10 @@ td > svg {
   border-color: transparent !important;
 }
 
+.react-tooltip {
+  z-index: 9999;
+}
+
 .loader-icon {
   margin-right: 7px;
   top: 2px;

@@ -26,3 +26,14 @@ export const convertToDateString = (iosDate: string) => {
     return null;
   }
 };
+
+export const getUserSearchParams = (
+  params: Array<[string, string]>
+): { [key: string]: string } => {
+  let mergedParams: { [key: string]: string } = { page: "1" };
+  for (const slug of params) {
+    mergedParams[slug[0]] = slug[1];
+  }
+
+  return mergedParams;
+};

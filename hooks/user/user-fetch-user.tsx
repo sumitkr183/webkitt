@@ -3,7 +3,7 @@ import { client } from "@/lib/api-client";
 import { getHeaders } from "@/lib/utility";
 import { FETCH_USERS } from "@/lib/endpoints";
 
-export const useFetchUser = (page = 1) => {
+export const useFetchUser = (page = "1") => {
   const query = useQuery({
     queryKey: [FETCH_USERS, { page }],
     queryFn: async () => {

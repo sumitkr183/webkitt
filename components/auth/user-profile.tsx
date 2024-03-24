@@ -19,7 +19,7 @@ const UserProfile = () => {
       onClick={() => setShowMenu(!showMenu)}
     >
       <span className="dropdown-link cursor-pointer" data-toggle="dropdown">
-        <Avatar />
+        <Avatar image="/images/profile-user.png" rounded />
       </span>
 
       <div

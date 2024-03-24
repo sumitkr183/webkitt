@@ -8,14 +8,16 @@ interface IAvatar {
   size?: "sm" | "xl";
   rounded?: boolean;
   fallbackUrl?: string;
+  image: string
 }
 
 const Avatar = ({
   size = "sm",
   rounded,
   fallbackUrl = "/images/profile-user.png",
+  image
 }: IAvatar) => {
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState(image);
 
   return (
     <div

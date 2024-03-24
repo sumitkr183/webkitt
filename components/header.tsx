@@ -8,7 +8,11 @@ const Header = () => {
   return (
     <div className="header mb-4">
       <div className="header-left">
-        <span className="burger-menu cursor-pointer">
+        <span
+          className="burger-menu cursor-pointer"
+          data-tooltip-id="collapse"
+          data-tooltip-content="Collapse Sidebar"
+        >
           <RxHamburgerMenu />
         </span>
       </div>
