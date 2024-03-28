@@ -1,24 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import Table from "@/components/ui/table";
-import Badge from "@/components/ui/badge";
 import Avatar from "@/components/ui/avatar";
+import Badge from "@/components/ui/badge";
 import Pagination from "@/components/pagination";
-import { IUser } from "@/types/user.type";
-import { TableLoader } from "@/components/ui/skeleton";
-import { useFetchUser } from "@/hooks/user";
+import { useDeletedUsers } from "@/hooks/user";
 import { convertToDateString, getUserSearchParams } from "@/lib/utility";
-import { DeleteAction, EditIcon, ViewAction } from "@/components/ui/svg-icons";
+import { TableLoader } from "@/components/ui/skeleton";
+import { RestoreAction } from "@/components/ui/svg-icons";
+import { ReactSweetAlert } from "../sweet-alert";
+import { deleteUser } from "@/lib/api-client";
+import { FETCH_DELETED_USERS } from "@/lib/endpoints";
+import { IUser } from "@/types/user.type";
 
-const ViewUsers = () => {
+const DeletedUsers = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const queryClient = useQueryClient()
   const { page } = getUserSearchParams(Array.from(searchParams.entries()));
 
-  const { data, isError, error, isLoading } = useFetchUser(page);
+  const [popup, setPopup] = useState({ id: "", status: false });
+  const { data, isError, error, isLoading } = useDeletedUsers(page);
 
   if (isLoading) return <TableLoader />;
   if (isError) throw new Error(error.message);
@@ -27,7 +34,22 @@ const ViewUsers = () => {
     e: React.MouseEvent<HTMLTableSectionElement, MouseEvent>
   ) => {
     const target = e.target as HTMLElement;
-    console.log(target.dataset);
+
+    if (target.dataset.actionType === "restore") {
+      const id: string = target.dataset.actionId || "";
+      setPopup({ id, status: true });
+    }
+  };
+
+  const handleRestore = async () => {
+    if (!popup.id) return;
+
+    const response: { status: boolean } = await deleteUser({ id: popup.id });    
+    if (response.status) {
+      queryClient.invalidateQueries({ queryKey: [FETCH_DELETED_USERS] })
+      toast.success("User restored successfully!");
+    }
+    setPopup({ id: "", status: false });
   };
 
   const handlePagination = (page: string | number) => {
@@ -59,15 +81,11 @@ const ViewUsers = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>
-                <Badge variant={user.status ? "success" : "danger"}>
-                  {user.status ? "Enable" : "Disable"}
-                </Badge>
+                <Badge variant="danger">Deleted</Badge>
               </td>
               <td>{convertToDateString(user.created)}</td>
               <td>
-                <ViewAction type="view" id={user.id} />
-                <EditIcon type="edit" id={user.id} />
-                <DeleteAction type="delete" id={user.id} />
+                <RestoreAction type="restore" id={user.id} />
               </td>
             </tr>
           ))}
@@ -81,8 +99,22 @@ const ViewUsers = () => {
         pageSize={10}
         onPageChange={(page) => handlePagination(page)}
       />
+
+      <ReactSweetAlert
+        show={popup.status}
+        warning
+        showCancel
+        confirmBtnText="Restore"
+        confirmBtnBsStyle="danger"
+        title="Are you sure?"
+        onConfirm={handleRestore}
+        onCancel={() => setPopup({ id: "", status: false })}
+        focusCancelBtn
+      >
+        You want to restore this user
+      </ReactSweetAlert>
     </>
   );
 };
 
-export default ViewUsers;
+export default DeletedUsers;

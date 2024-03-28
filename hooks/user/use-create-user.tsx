@@ -14,7 +14,7 @@ export const useCreateUser = () => {
     onSuccess: () => {
       toast.success(USER_SUCCESS);
       router.push("/users");
-    },
+    },    
   });
 
   return { ...mutation };

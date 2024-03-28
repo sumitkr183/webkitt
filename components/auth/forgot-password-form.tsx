@@ -30,6 +30,7 @@ const ForgotPasswordForm = () => {
       <Form onSubmit={handleSubmit(onSubmit)} className="signin-form">
         <FormGroup label="Email Address" required>
           <FormInput
+            autoFocus
             placeholder="Enter your email address"
             {...register("email", {
               required: "Email address is required",
@@ -44,7 +45,9 @@ const ForgotPasswordForm = () => {
           )}
         </FormGroup>
 
-        <Button fit className="btn-uppercase">SEND EMAIL</Button>
+        <Button fit className="btn-uppercase">
+          SEND EMAIL
+        </Button>
       </Form>
       <p className="mg-t-40 mg-b-0 tx-color-03 text-center">
         Already have an account? <Link href="/">Signin</Link>

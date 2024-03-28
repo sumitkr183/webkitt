@@ -38,6 +38,7 @@ const SignInForm = () => {
               },
             })}
             disabled={isPending}
+            autoFocus
           />
           {errors.username && (
             <span className="required-field">{errors.username.message}</span>

@@ -9,6 +9,8 @@ const TooltipProvider = ({ children }: { children: React.ReactNode }) => {
       <Tooltip id="delete" place="bottom" />
       <Tooltip id="edit" place="bottom" />
       <Tooltip id="view" place="bottom" />
+      <Tooltip id="restore" place="bottom" />
+
       <Tooltip id="collapse" place="right" />
     </>
   );

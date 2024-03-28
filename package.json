@@ -16,6 +16,7 @@
     "crypto-js": "^4.2.0",
     "next": "14.0.4",
     "react": "^18",
+    "react-bootstrap-sweetalert": "^5.2.0",
     "react-detect-click-outside": "^1.1.7",
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
