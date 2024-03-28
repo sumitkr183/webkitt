@@ -4,7 +4,7 @@ import { client } from "@/lib/api-client";
 import { getHeaders } from "@/lib/utility";
 import { FETCH_DELETED_USERS } from "@/lib/endpoints";
 
-export const useDeletedUsers = (page: string) => {
+export const useFetchDeletedUsers = (page: string) => {
   const query = useQuery({
     queryKey: [FETCH_DELETED_USERS, { page }],
     queryFn: async () => {
