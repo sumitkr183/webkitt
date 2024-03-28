@@ -1,11 +1,12 @@
 "use client";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button from "@/components/ui/button";
+
 import Form, { FormGroup, FormInput } from "@/components/ui/form";
 import { IUserCreate } from "@/types/user.type";
 import { useCreateUser } from "@/hooks/user";
-import Spinner from "../ui/spinner";
+import Button from "@/components/ui/button";
+import Spinner from "@/components/ui/spinner";
 
 const CreateUser = () => {
   const {

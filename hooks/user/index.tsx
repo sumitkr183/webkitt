@@ -4,7 +4,7 @@ import { useEmailVerify } from "./use-email-verify";
 import { useForgotPassword } from "./use-forgot-password";
 import { useCreateUser } from "./use-create-user";
 import { useFetchUser } from "./user-fetch-user";
-import { useDeletedUsers } from "./use-deleted-users";
+import { useFetchDeletedUsers } from "./use-fetch-deleted-users";
 
 export {
   useSignIn,
@@ -13,5 +13,5 @@ export {
   useForgotPassword,
   useCreateUser,
   useFetchUser,
-  useDeletedUsers
+  useFetchDeletedUsers
 };

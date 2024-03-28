@@ -9,7 +9,7 @@ import Table from "@/components/ui/table";
 import Avatar from "@/components/ui/avatar";
 import Badge from "@/components/ui/badge";
 import Pagination from "@/components/pagination";
-import { useDeletedUsers } from "@/hooks/user";
+import { useFetchDeletedUsers } from "@/hooks/user";
 import { convertToDateString, getUserSearchParams } from "@/lib/utility";
 import { TableLoader } from "@/components/ui/skeleton";
 import { RestoreAction } from "@/components/ui/svg-icons";
@@ -25,7 +25,7 @@ const DeletedUsers = () => {
   const { page } = getUserSearchParams(Array.from(searchParams.entries()));
 
   const [popup, setPopup] = useState({ id: "", status: false });
-  const { data, isError, error, isLoading } = useDeletedUsers(page);
+  const { data, isError, error, isLoading } = useFetchDeletedUsers(page);
 
   if (isLoading) return <TableLoader />;
   if (isError) throw new Error(error.message);
